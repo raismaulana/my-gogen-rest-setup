@@ -1,0 +1,32 @@
+# super user
+super_username: supersu
+super_password: mypasswordisstrong
+
+# database
+db_host: "127.0.0.1"
+db_port: "5432"
+db_name: blog
+db_user: postgres
+db_password: postgres
+
+# app
+app_name: blogP
+base_url: http://localhost:8080 #end without slash
+base_url_v1: http://localhost:8080/v1 #end without slash
+port: "8080"
+
+# auth
+secretkey: i'm secret key
+
+# smtp
+smtp_host: smtp.example.com
+smtp_port: 587
+smtp_sender: "Mize Team <myemail@example.com>"
+smtp_email: myemail@example.com
+smtp_password: mypassword
+
+# redis
+redis_host: localhost
+redis_port: "6379"
+redis_password: redis
+redis_db: 0
