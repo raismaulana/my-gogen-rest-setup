@@ -8,7 +8,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/raismaulana/my-gogen-rest-setup/infrastructure/log"
+	"github.com/raismaulana/digilibP/infrastructure/log"
 )
 
 // GracefullyShutdown will handle http server with gracefully shutdown mechanism

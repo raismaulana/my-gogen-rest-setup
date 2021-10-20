@@ -15,5 +15,5 @@
 # vendor/
 
 .vscode
-.editorconfig
-config.yaml
+.log/logs/*
+!.log/logs/.gitkeep

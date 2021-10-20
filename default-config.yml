@@ -1,3 +1,5 @@
+production: false
+
 # super user
 super_username: supersu
 super_password: mypasswordisstrong
@@ -10,20 +12,20 @@ db_user: postgres
 db_password: postgres
 
 # app
-app_name: blogP
+app_name: Mize BLog
 base_url: http://localhost:8080 #end without slash
 base_url_v1: http://localhost:8080/v1 #end without slash
 port: "8080"
 
 # auth
-secretkey: i'm secret key
+secretkey: d09sa;'/!djosi8ds0a0das
 
 # smtp
-smtp_host: smtp.example.com
+smtp_host: smtp.gmail.com
 smtp_port: 587
-smtp_sender: "Mize Team <myemail@example.com>"
-smtp_email: myemail@example.com
-smtp_password: mypassword
+smtp_sender: "Mize Team <devlufriraismaulana@gmail.com>"
+smtp_email: devlufriraismaulana@gmail.com
+smtp_password: Secret#1
 
 # redis
 redis_host: localhost

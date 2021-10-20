@@ -4,13 +4,13 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/raismaulana/my-gogen-rest-setup/application"
-	"github.com/raismaulana/my-gogen-rest-setup/application/registry"
+	"github.com/raismaulana/digilibP/application"
+	"github.com/raismaulana/digilibP/application/registry"
 )
 
 func main() {
 	appMap := map[string]func() application.RegistryContract{
-		"usingdb": registry.NewApp(),
+		"app": registry.NewApp(),
 	}
 
 	flag.Parse()
@@ -24,5 +24,4 @@ func main() {
 			fmt.Printf("%s\n", appName)
 		}
 	}
-
 }

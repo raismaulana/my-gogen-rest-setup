@@ -2,6 +2,7 @@ package apperror
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -23,6 +24,7 @@ type ErrorType string
 type ErrorWithCode interface {
 	error
 	Code() string
+	CodeInt() int
 }
 
 const errorCodePrefix = "ER"
@@ -47,6 +49,21 @@ func (u ErrorType) Code() string {
 	return ""
 }
 
+// Code return the only code int type
+func (u ErrorType) CodeInt() int {
+	s := string(u)
+	if strings.HasPrefix(s, errorCodePrefix) {
+		i := strings.Index(s, " ")
+		code := strings.TrimPrefix(s[:i], errorCodePrefix)
+		codeInt, err := strconv.Atoi(code)
+		if err != nil {
+			return 500
+		}
+		return codeInt
+	}
+	return 500
+}
+
 // Var add generic variable value to the error message
 // for example you have
 // UserNotFoundError ErrorType = "ER1092 User with name %s is not found"
@@ -59,4 +76,13 @@ func (u ErrorType) Var(params ...interface{}) ErrorType {
 // String return the error as it is
 func (u ErrorType) String() string {
 	return string(u)
+}
+
+// Extract error code int apperror
+func GetErrorCode(err error) int {
+	et, ok := err.(ErrorWithCode)
+	if !ok {
+		return 500
+	}
+	return et.CodeInt()
 }

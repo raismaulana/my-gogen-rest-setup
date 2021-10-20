@@ -13,7 +13,8 @@ import (
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
 	en_translations "github.com/go-playground/validator/v10/translations/en"
-	"github.com/raismaulana/my-gogen-rest-setup/infrastructure/util"
+	"github.com/raismaulana/digilibP/infrastructure/env"
+	"github.com/raismaulana/digilibP/infrastructure/util"
 )
 
 // GinHTTPHandler will define basic HTTP configuration with gracefully shutdown
@@ -22,10 +23,14 @@ type GinHTTPHandler struct {
 	Router *gin.Engine
 }
 
-func NewGinHTTPHandler(address string) (GinHTTPHandler, error) {
+// NewGinHTTPHandler ...
+func NewGinHTTPHandler(address string) GinHTTPHandler {
 
+	if env.GetBool("production", false) {
+		gin.SetMode(gin.ReleaseMode)
+	}
 	router := gin.Default()
-	router.Static("/public", "./public")
+
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
 		en := en.New()
 		uni := ut.New(en, en)
@@ -42,6 +47,10 @@ func NewGinHTTPHandler(address string) (GinHTTPHandler, error) {
 		})
 
 	}
+
+	// LOGGER
+	router.Use(LoggerToFile())
+
 	// CORS
 	router.Use(cors.New(cors.Config{
 		ExposeHeaders:   []string{"Data-Length"},
@@ -57,9 +66,9 @@ func NewGinHTTPHandler(address string) (GinHTTPHandler, error) {
 	})
 
 	return GinHTTPHandler{
-		GracefullyShutdown: NewGracefullyShutdown(router, address),
+		GracefullyShutdown: NewGracefullyShutdown(router, ":"+address),
 		Router:             router,
-	}, nil
+	}
 
 }
 
