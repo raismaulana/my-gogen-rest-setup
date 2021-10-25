@@ -3,8 +3,9 @@ package server
 import (
 	"time"
 
+	"example/infrastructure/log"
+
 	"github.com/gin-gonic/gin"
-	"github.com/raismaulana/digilibP/infrastructure/log"
 	"github.com/sirupsen/logrus"
 )
 

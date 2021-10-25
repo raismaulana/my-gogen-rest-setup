@@ -3,7 +3,7 @@ package database
 import (
 	"context"
 
-	"github.com/raismaulana/digilibP/infrastructure/log"
+	"example/infrastructure/log"
 
 	"gorm.io/gorm"
 )

@@ -4,8 +4,8 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/raismaulana/digilibP/application"
-	"github.com/raismaulana/digilibP/application/registry"
+	"example/application"
+	"example/application/registry"
 )
 
 func main() {

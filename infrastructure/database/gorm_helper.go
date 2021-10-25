@@ -3,7 +3,7 @@ package database
 import (
 	"context"
 
-	"github.com/raismaulana/digilibP/application/apperror"
+	"example/application/apperror"
 
 	"gorm.io/gorm"
 )

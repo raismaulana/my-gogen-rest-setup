@@ -1,14 +1,13 @@
 package registry
 
 import (
-	"github.com/raismaulana/digilibP/application"
-	"github.com/raismaulana/digilibP/controller"
-	"github.com/raismaulana/digilibP/infrastructure/auth"
-	"github.com/raismaulana/digilibP/infrastructure/database"
-	"github.com/raismaulana/digilibP/infrastructure/env"
-	"github.com/raismaulana/digilibP/infrastructure/log"
-	"github.com/raismaulana/digilibP/infrastructure/server"
-	"gorm.io/gorm"
+	"example/application"
+	"example/controller"
+	"example/infrastructure/auth"
+	"example/infrastructure/database"
+	"example/infrastructure/env"
+	"example/infrastructure/log"
+	"example/infrastructure/server"
 )
 
 type app struct {
@@ -23,7 +22,7 @@ func NewApp() func() application.RegistryContract {
 		log.UseRotateFile(".log", "default", 30)
 
 		// setup db
-		db := database.NewGormPostgres(&gorm.Config{})
+		db := database.NewGormPostgres()
 
 		enforcer := auth.NewCasbinEnforcerByDB(db)
 
@@ -33,6 +32,7 @@ func NewApp() func() application.RegistryContract {
 		return &app{
 			GinHTTPHandler: httpHandler,
 			BaseController: controller.BaseController{
+				Router:   httpHandler.Router,
 				Enforcer: enforcer,
 			},
 			// TODO another controller will added here ... <<<<<<

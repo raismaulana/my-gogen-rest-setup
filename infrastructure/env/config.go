@@ -5,7 +5,8 @@ import (
 	"os"
 	"sync"
 
-	"github.com/raismaulana/digilibP/infrastructure/log"
+	"example/infrastructure/log"
+
 	"github.com/spf13/viper"
 )
 

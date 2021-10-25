@@ -6,6 +6,10 @@ import (
 	"strings"
 	"time"
 
+	"example/infrastructure/env"
+
+	"example/infrastructure/util"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
@@ -13,8 +17,6 @@ import (
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
 	en_translations "github.com/go-playground/validator/v10/translations/en"
-	"github.com/raismaulana/digilibP/infrastructure/env"
-	"github.com/raismaulana/digilibP/infrastructure/util"
 )
 
 // GinHTTPHandler will define basic HTTP configuration with gracefully shutdown

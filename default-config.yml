@@ -21,11 +21,11 @@ port: "8080"
 secretkey: d09sa;'/!djosi8ds0a0das
 
 # smtp
-smtp_host: smtp.gmail.com
+smtp_host: smtp.example.com
 smtp_port: 587
-smtp_sender: "Mize Team <devlufriraismaulana@gmail.com>"
-smtp_email: devlufriraismaulana@gmail.com
-smtp_password: Secret#1
+smtp_sender: "example <example@example.com>"
+smtp_email: example@example.com
+smtp_password: example
 
 # redis
 redis_host: localhost
